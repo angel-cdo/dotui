@@ -1,0 +1,43 @@
+// package render
+
+// import (
+// 	"context"
+// 	config "dotui/config"
+// 	"fmt"
+
+// 	"github.com/derailed/tcell/v2"
+// 	"github.com/digitalocean/godo"
+// 	"golang.org/x/oauth2"
+// )
+
+// type Context struct {
+// }
+
+// func (c *Context) Render(global_context *config.GlobalContext, base_render *BaseRender) {
+// 	drawHeaders(c, global_context.Table)
+
+// 	global_context.Table.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
+// 		row, column := global_context.Table.GetSelection()
+// 		if event.Key() == tcell.KeyEnter {
+// 			cell := global_context.Table.GetCell(row, column)
+// 			token := config.GetDoToken(cell.Text)
+// 			authToken := &oauth2.Token{AccessToken: token}
+// 			oauthClient := oauth2.NewClient(context.Background(), oauth2.StaticTokenSource(authToken))
+// 			global_context.Client = godo.NewClient(oauthClient)
+// 		}
+// 		return event
+// 	})
+
+// 	names := config.GetDoTokensName()
+
+// 	for i, name := range names {
+// 		row := i + 1
+// 		setTableCell(global_context.Table, row, 0, name)
+// 	}
+// 	global_context.Table.SetBorder(true).SetTitle(fmt.Sprintf(" contexts [%d]", len(names)))
+// }
+
+// func (c *Context) GetHeaders() []string {
+// 	headers := []string{"NAME"}
+// 	return headers
+// }
