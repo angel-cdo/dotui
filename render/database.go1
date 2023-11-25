@@ -1,0 +1,37 @@
+// package render
+
+// import (
+// 	"context"
+// 	"dotui/config"
+// 	"log"
+
+// 	"github.com/digitalocean/godo"
+// )
+
+// type Database struct {
+// }
+
+// func (d *Database) Render(global_context *config.GlobalContext, base_render *BaseRender) {
+// 	global_context.Table.SetBorder(true).SetTitle(" databases ")
+// 	drawHeaders(d, global_context.Table)
+
+// 	list_value := godo.ListOptions{Page: 1, PerPage: 100, WithProjects: false}
+// 	databases, _, err := global_context.Client.Databases.List(context.Background(), &list_value)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+
+// 	for i, database := range databases {
+// 		row := i + 1
+// 		setTableCell(global_context.Table, row, 0, database.ID)
+// 		setTableCell(global_context.Table, row, 1, database.Name)
+// 		setTableCell(global_context.Table, row, 2, database.RegionSlug)
+// 		setTableCell(global_context.Table, row, 3, database.SizeSlug)
+// 		setTableCell(global_context.Table, row, 4, database.Status)
+// 	}
+// }
+
+// func (d *Database) GetHeaders() []string {
+// 	headers := []string{"ID", "NAME", "REGION", "SIZE", "STATUS"}
+// 	return headers
+// }

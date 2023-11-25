@@ -1,0 +1,39 @@
+// package render
+
+// import (
+// 	"context"
+// 	"dotui/config"
+// 	"fmt"
+// 	"log"
+
+// 	"github.com/digitalocean/godo"
+// )
+
+// type Kubernetes struct {
+// }
+
+// func (k *Kubernetes) Render(global_context *config.GlobalContext, base_render *BaseRender) {
+// 	drawHeaders(k, global_context.Table)
+
+// 	list_value := godo.ListOptions{Page: 1, PerPage: 100, WithProjects: false}
+// 	kubernetes, _, err := global_context.Client.Kubernetes.List(context.Background(), &list_value)
+
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+
+// 	for i, cluster := range kubernetes {
+// 		row := i + 1
+// 		setTableCell(global_context.Table, row, 0, cluster.ID)
+// 		setTableCell(global_context.Table, row, 1, cluster.Name)
+// 		setTableCell(global_context.Table, row, 2, cluster.RegionSlug)
+// 		setTableCell(global_context.Table, row, 3, fmt.Sprintf("%s", cluster.Tags))
+// 		setTableCell(global_context.Table, row, 4, string(cluster.Status.State))
+// 	}
+// 	global_context.Table.SetBorder(true).SetTitle(fmt.Sprintf(" kubernetes [%d]", len(kubernetes)))
+// }
+
+// func (k *Kubernetes) GetHeaders() []string {
+// 	headers := []string{"ID", "NAME", "REGION", "TAGS", "STATUS"}
+// 	return headers
+// }
